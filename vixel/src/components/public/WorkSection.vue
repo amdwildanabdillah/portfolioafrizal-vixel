@@ -1,130 +1,155 @@
 <script setup>
-import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { EffectCoverflow, Pagination, Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/pagination'
 
-// Dummy data untuk gambar Marquee
-const marqueeImages = [
-  'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=800&auto=format&fit=crop'
-]
-
-// State untuk Coverflow Kategori Utama
-const activeCategory = ref(1) // Default tengah (Video Editor)
+const swiperModules = [EffectCoverflow, Pagination, Autoplay]
 
 const mainCategories = [
-  { id: 0, title: 'Graphic Design', desc: 'Social media, branding, and visual identity.', img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1000&auto=format&fit=crop' },
-  { id: 1, title: 'Video Editor', desc: 'Cinematic storytelling and commercial editing.', img: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop' },
-  { id: 2, title: 'Photography', desc: 'Capturing moments with precision and atmospheric depth.', img: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop' }
+  { id: 0, title: 'Graphic Design', desc: 'Social media, branding, and visual identity.', img: '/images/landscape/landsape8.webp' },
+  { id: 1, title: 'Video Editor', desc: 'Cinematic storytelling and commercial editing.', img: '/images/landscape/landsape9.webp' },
+  { id: 2, title: 'Photography', desc: 'Capturing moments with precision and atmospheric depth.', img: '/images/landscape/landsape10.webp' }
 ]
 
-// Data Kategori Lainnya (Meta Ads, dll)
 const otherCategories = [
   { title: 'Meta Ads Campaigns', tag: 'Marketing' },
-  { title: 'Color Grading', tag: 'Post-Production' },
+  { title: 'AI Automation', tag: 'Automation' },
   { title: 'Print & Editorial', tag: 'Design' },
   { title: 'Drone Operation', tag: 'Videography' }
 ]
 </script>
 
 <template>
-  <section id="work" class="relative z-10 w-full pt-20 pb-32 flex flex-col overflow-hidden">
+  <section class="relative w-full bg-[#07090F] pt-24 md:pt-32 pb-24 z-20 overflow-hidden">
     
-    <!-- 1. THEME BREAK: INFINITE MARQUEE MIRING -->
-    <div class="relative w-[110vw] -ml-[5vw] bg-[#e1e2eb] text-[#07090F] py-16 md:py-24 -rotate-3 scale-110 z-20 shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col gap-6 md:gap-8 overflow-hidden">
-      <div class="px-10 max-w-6xl mx-auto w-full mb-4">
-        <h2 class="text-3xl md:text-5xl font-light tracking-tight">
-          Visual <span class="font-serif italic text-cyan-700">Explorations</span>
+    <!-- ====== BACKGROUND PEMANIS ====== -->
+    <!-- 1. Ambient Glow (Indigo & Fuchsia) -->
+    <div class="absolute top-0 left-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-indigo-600/10 rounded-full blur-[100px] md:blur-[140px] -z-10 pointer-events-none -translate-x-1/4 -translate-y-1/4"></div>
+    <div class="absolute bottom-0 right-0 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-fuchsia-600/10 rounded-full blur-[100px] md:blur-[140px] -z-10 pointer-events-none translate-x-1/4 translate-y-1/4"></div>
+
+    <!-- 2. Subtle Designer Grid dengan Fading Edge -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff04_1px,transparent_1px),linear-gradient(to_bottom,#ffffff04_1px,transparent_1px)] bg-[size:32px_32px] md:bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_50%,#000_10%,transparent_100%)] -z-10 pointer-events-none"></div>
+    <!-- ================================ -->
+
+    <div class="max-w-5xl mx-auto w-full flex flex-col justify-center relative z-10">
+
+      <!-- Teks Clean Editorial -->
+      <div class="px-6 mb-8 md:mb-12 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl font-light text-white tracking-wide">
+          Featured <span class="font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-indigo-300">Disciplines.</span>
         </h2>
-        <p class="text-sm font-normal text-gray-600 mt-2 uppercase tracking-widest">A glimpse into the creative process</p>
+        <p class="text-white/40 font-light mt-2 max-w-md mx-auto text-[11px] md:text-sm tracking-wide">Pillars of my creative expertise.</p>
       </div>
 
-      <!-- Track 1: Kiri -->
-      <div class="flex whitespace-nowrap animate-marquee-left items-center gap-4 md:gap-8 w-max">
-        <template v-for="n in 2" :key="'track1-'+n">
-          <div v-for="(img, idx) in marqueeImages" :key="idx" class="w-48 md:w-80 aspect-video rounded-xl md:rounded-2xl overflow-hidden shadow-lg border border-gray-300 relative group">
-            <img :src="img" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500" alt="Work Process" />
-          </div>
-        </template>
-      </div>
-
-      <!-- Track 2: Kanan -->
-      <div class="flex whitespace-nowrap animate-marquee-right items-center gap-4 md:gap-8 w-max -ml-40 md:-ml-80">
-        <template v-for="n in 2" :key="'track2-'+n">
-          <div v-for="(img, idx) in marqueeImages.slice().reverse()" :key="idx" class="w-40 md:w-64 aspect-[4/3] rounded-xl md:rounded-2xl overflow-hidden shadow-lg border border-gray-300 relative group">
-            <img :src="img" class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition-all duration-500" alt="Work Process" />
-          </div>
-        </template>
-      </div>
-    </div>
-
-    <!-- 2. MAIN CATEGORIES: COVERFLOW -->
-    <div class="relative w-full h-[500px] flex items-center justify-center gap-4 px-4 overflow-x-auto snap-x snap-mandatory pb-4">
-  
-  <template v-for="(cat, i) in mainCategories" :key="cat.id">
-    <!-- Tambahin snap-center biar pas digeser dia berhenti tepat di tengah -->
-    <div 
-      @click="activeCategory = i"
-      class="snap-center shrink-0 transition-all duration-700 ease-out cursor-pointer rounded-[2rem] overflow-hidden relative border border-white/10 group flex flex-col justify-end"
-      :class="[
-        // Di mobile (w-[280px]), di desktop (responsive sesuai logic aktif)
-        activeCategory === i 
-          ? 'w-[280px] md:w-[400px] h-[400px] md:h-[500px] z-30 shadow-[0_20px_50px_rgba(0,0,0,0.5)]' 
-          : 'w-[240px] md:w-[300px] h-[350px] md:h-[400px] z-10 opacity-60 hover:opacity-100'
-      ]"
-    >
-      <img :src="cat.img" :alt="cat.title" class="absolute inset-0 w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-gradient-to-t from-[#07090F] to-transparent"></div>
-
-      <div class="relative p-6 md:p-8">
-        <h3 class="text-xl md:text-2xl font-light text-white">{{ cat.title }}</h3>
-        
-        <!-- View Portfolio Link (Pastikan RouterLink dipanggil) -->
-        <RouterLink 
-          :to="`/work/${cat.title.toLowerCase().replace(/\s+/g, '-')}`"
-          @click.stop
-          v-show="activeCategory === i" 
-          class="mt-2 flex items-center gap-2 text-cyan-400 text-xs md:text-sm hover:underline"
+      <div class="w-full h-[280px] md:h-[320px] overflow-hidden px-4 md:px-0">
+        <Swiper
+          :effect="'coverflow'"
+          :grabCursor="true"
+          :centeredSlides="true"
+          :slidesPerView="'auto'"
+          :loop="true"
+          :autoplay="{ delay: 3500, disableOnInteraction: false }"
+          :coverflowEffect="{ rotate: 0, stretch: 0, depth: 100, modifier: 1.5, slideShadows: false }"
+          :pagination="{ clickable: true }"
+          :modules="swiperModules"
+          class="w-full h-full pb-8"
         >
-          View Portfolio &rarr;
-        </RouterLink>
+          <SwiperSlide v-for="(cat, i) in mainCategories" :key="cat.id" class="my-swiper-slide w-[220px] h-[260px] md:w-[280px] md:h-[300px] rounded-2xl overflow-hidden relative border border-white/10 group cursor-pointer bg-[#07090F]">
+            
+            <div class="absolute inset-0">
+              <img :src="cat.img" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-100" />
+              <!-- Gradient gelap tanpa neon -->
+              <div class="card-overlay absolute inset-0 bg-gradient-to-t from-[#07090F] via-[#07090F]/80 to-transparent transition-opacity duration-500"></div>
+            </div>
+
+            <!-- UX Baru: Tombol di Kanan, Teks di Kiri -->
+            <div class="card-content absolute bottom-0 left-0 w-full p-4 md:p-5 flex justify-between items-end gap-2">
+              
+              <div class="flex flex-col items-start w-[70%]">
+                <!-- Aksen Kreatif: Angka Bracket -->
+                <span class="text-white/40 text-[9px] font-mono tracking-[0.2em] mb-1.5 border-b border-white/10 pb-0.5 group-hover:text-fuchsia-300 transition-colors">
+                  [ 0{{ i + 1 }} ]
+                </span>
+                <h3 class="text-base md:text-xl font-medium text-white tracking-wide break-words w-full">{{ cat.title }}</h3>
+                <p class="text-white/40 font-light mt-1 text-[9px] md:text-[10px] line-clamp-2 hidden md:block">{{ cat.desc }}</p>
+              </div>
+
+              <!-- Tombol View Sleek di Kanan -->
+              <RouterLink :to="`/work/${cat.title.toLowerCase().replace(/\s+/g, '-')}`" class="mb-1 shrink-0 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md text-white/90 hover:bg-white hover:text-[#07090F] text-[9px] md:text-[10px] font-medium transition-all duration-300 flex items-center gap-1.5 group/btn shadow-[0_4px_12px_rgba(0,0,0,0.2)]">
+                View
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover/btn:translate-x-1 transition-transform">
+                  <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                </svg>
+              </RouterLink>
+
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
-    </div>
-  </template>
-</div>
 
-    <!-- 3. OTHER CATEGORIES (RouterLink Area) -->
-    <div class="max-w-[1440px] mx-auto w-full px-6 md:px-12 mt-24 md:mt-32 relative z-30" data-aos="fade-up">
-      <div class="border-t border-white/10 pt-12">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <h3 class="text-2xl font-light text-white">Other <span class="font-serif italic text-cyan-400">Expertise</span></h3>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- ROUTER LINK AMAN DI SINI -->
+      <!-- Kategori Bawah: Glass Pill Bersih Tanpa Neon -->
+      <div class="max-w-3xl mx-auto w-full px-6 mt-6 md:mt-10" data-aos="fade-up">
+        <div class="flex flex-wrap justify-center items-center gap-2.5 md:gap-4">
+          
           <RouterLink 
-  v-for="(cat, i) in otherCategories" :key="i"
-  :to="`/work/${cat.title.toLowerCase().replace(/\s+/g, '-')}`"
-  class="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/5 transition-colors cursor-pointer group block"
->
-            <span class="text-gray-500 text-[10px] uppercase tracking-[0.2em] font-normal group-hover:text-cyan-400 transition-colors">{{ cat.tag }}</span>
-            <h4 class="text-lg font-normal text-white mt-2">{{ cat.title }}</h4>
-            <div class="mt-6 w-8 h-px bg-white/20 group-hover:bg-cyan-400 group-hover:w-12 transition-all duration-300"></div>
+            v-for="(cat, i) in otherCategories" 
+            :key="i" 
+            :to="`/work/${cat.title.toLowerCase().replace(/\s+/g, '-')}`" 
+            class="px-4 py-2 md:px-5 md:py-2.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md hover:bg-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 cursor-pointer flex items-center gap-2 group shadow-sm"
+          >
+            <!-- Aksen Titik Indigo/Fuchsia Menyesuaikan Theme -->
+            <div class="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-indigo-400 transition-colors shadow-[0_0_8px_rgba(129,140,248,0)] group-hover:shadow-[0_0_8px_rgba(129,140,248,0.6)]"></div>
+            
+            <h4 class="text-[10px] md:text-xs font-light text-white/60 group-hover:text-white transition-colors tracking-wide">
+              {{ cat.title }}
+            </h4>
           </RouterLink>
+
         </div>
       </div>
-    </div>
 
+    </div>
   </section>
 </template>
 
 <style scoped>
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.animate-marquee-left { animation: marqueeLeft 40s linear infinite; }
-.animate-marquee-right { animation: marqueeRight 35s linear infinite; }
-@keyframes marqueeLeft { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
-@keyframes marqueeRight { 0% { transform: translateX(-50%); } 100% { transform: translateX(0%); } }
+/* Pagination Minimalis Putih */
+:deep(.swiper-pagination-bullet) {
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 5px;
+  height: 5px;
+  transition: all 0.3s ease;
+}
+:deep(.swiper-pagination-bullet-active) {
+  background-color: #ffffff;
+  width: 16px;
+  border-radius: 4px;
+}
+:deep(.swiper-pagination) {
+  bottom: 0px !important;
+}
+.my-swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.35;
+  filter: blur(1.5px);
+  transform: scale(0.9);
+}
+.my-swiper-slide:not(.swiper-slide-active) .card-overlay {
+  opacity: 0.9 !important;
+}
+.my-swiper-slide:not(.swiper-slide-active) .card-content {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+.swiper-slide-active .card-overlay {
+  opacity: 1 !important;
+}
+.swiper-slide-active .card-content {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
 </style>

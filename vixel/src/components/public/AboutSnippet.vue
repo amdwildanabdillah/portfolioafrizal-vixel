@@ -25,16 +25,22 @@ const courses = ['Perencanaan Kreatif Media', 'Periklanan', 'Fotografi', 'Desain
               <span class="text-[9px] md:text-[10px] font-normal tracking-[0.2em] text-cyan-400 uppercase">Ahmad Rizqi Af Rizal</span>
             </div>
             <h2 class="text-4xl md:text-5xl lg:text-6xl font-light text-white tracking-tight leading-tight">
-              Hello <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-cyan-300 font-serif italic">it's me...</span>
+              Hai, <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 to-cyan-300 font-serif italic">saya</span>
             </h2>
           </div>
 
           <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
             <p class="text-gray-300 text-sm md:text-base leading-relaxed font-light">
-              Lulusan baru (<i class="font-serif text-white/80">fresh graduate</i>) S1 Ilmu Komunikasi dari UIN Sunan Ampel Surabaya. Saya adalah pribadi yang senang belajar hal baru, berorientasi pada detail, dan memiliki aspirasi besar untuk berkarier di bidang kreatif serta media marketing.
+              <i class="font-serif text-white/80">Ahmad Rizqi Af Rizal</i> seorang Visual Creative Designer dengan pengalaman 
+lebih dari 3 tahun di bidang desain grafis, video editing, motion graphics, dan fotografi. Saya 
+berfokus pada menciptakan visual yang tidak hanya menarik secara estetika, tetapi juga 
+mampu menyampaikan pesan dan membangun koneksi dengan audiens melalui storytelling 
+yang kuat.
             </p>
             <p class="text-gray-400 text-sm md:text-base leading-relaxed font-light">
-              Menguasai alur kerja penggunaan aplikasi editing, color grading, hingga pengambilan video dan gambar.
+              Dengan pengalaman menggunakan Adobe Photoshop, Illustrator, Premiere Pro, After Effects, 
+CapCut, dan Firefly, saya membantu mengubah ide menjadi konten visual yang efektif, 
+kreatif, dan berorientasi pada hasil. 
             </p>
           </div>
 
@@ -50,13 +56,13 @@ const courses = ['Perencanaan Kreatif Media', 'Periklanan', 'Fotografi', 'Desain
           <div class="relative pt-6 mt-4 border-t border-white/10" data-aos="fade-up" data-aos-delay="300">
             <!-- Fading Grid Background -->
             <div class="absolute inset-0 bg-[linear-gradient(to_right,#ffffff10_1px,transparent_1px),linear-gradient(to_bottom,#ffffff10_1px,transparent_1px)] bg-[size:12px_12px] [mask-image:linear-gradient(to_right,transparent,black_30%,black_70%,transparent)] -z-10"></div>
-            
+
             <h3 class="text-white/80 font-normal uppercase tracking-[0.2em] text-[10px] mb-4 text-center md:text-left">
               Digital Arsenal
             </h3>
-            
+
             <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
-              
+
               <!-- 1. PHOTOSHOP -->
               <div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl bg-[#07090F]/50 border border-white/10 backdrop-blur-md hover:-translate-y-1 hover:border-cyan-400/50 hover:shadow-[0_4px_15px_rgba(6,182,212,0.2)] transition-all cursor-pointer group relative">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="w-5 h-5 md:w-6 md:h-6 opacity-70 group-hover:opacity-100 transition-opacity">
@@ -116,16 +122,14 @@ const courses = ['Perencanaan Kreatif Media', 'Periklanan', 'Fotografi', 'Desain
                 </span>
               </div>
 
-              <!-- 6. CANVA -->
-              <div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl bg-[#07090F]/50 border border-white/10 backdrop-blur-md hover:-translate-y-1 hover:border-cyan-300/50 hover:shadow-[0_4px_15px_rgba(6,182,212,0.2)] transition-all cursor-pointer group relative">
-                <!-- SVG Canva (Gradient Cyan to Purple bawaan Canva) -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 md:w-6 md:h-6 opacity-70 group-hover:opacity-100 transition-opacity">
-                  <path fill="#00C4CC" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 18.545c-3.608 0-6.545-2.937-6.545-6.545S8.392 5.455 12 5.455 18.545 8.392 18.545 12 15.608 18.545 12 18.545zm-2.455-6.545a2.455 2.455 0 1 1-4.91 0 2.455 2.455 0 0 1 4.91 0z"/>
-                </svg>
-                <span class="absolute -top-8 bg-white text-[#07090F] text-[9px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap font-normal shadow-lg">
-                  Canva
-                </span>
-              </div>
+              <!-- 6. META -->
+              <!-- Ganti bagian blok Meta yang lama dengan ini -->
+<div class="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-xl bg-[#07090F]/50 border border-white/10 backdrop-blur-md hover:-translate-y-1 hover:border-blue-500/50 hover:shadow-[0_4px_15px_rgba(0,129,251,0.2)] transition-all cursor-pointer group relative">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 153" class="w-5 h-5 md:w-6 md:h-6 opacity-70 group-hover:opacity-100 transition-opacity fill-blue-500">
+           <path d="M60.1 152.9c-15.6 0-30.8-6.1-41.9-17.2C7.1 124.6.8 109.3.8 93.6c0-15.7 6.3-31 17.4-42.1C29.3 40.4 44.5 34.3 60.1 34.3c14 0 27.5 5 38.3 14 11.2 9.3 19 22.1 22.3 36.4 3.3-14.3 11.1-27.1 22.3-36.4 10.8-9 24.3-14 38.3-14 15.6 0 30.8 6.1 41.9 17.2 11.1 11.1 17.4 26.4 17.4 42.1s-6.3 31-17.4 42.1c-11.1 11.1-26.3 17.2-41.9 17.2-13.8 0-27-4.8-37.7-13.6-11.6-9.6-19.8-23-23.2-37.9-3.4 14.9-11.6 28.3-23.2 37.9-10.7 8.8-23.9 13.6-37.7 13.6zm0-95.6c-9.5 0-18.4 3.7-25.1 10.4-6.7 6.7-10.4 15.6-10.4 25.1 0 9.5 3.7 18.4 10.4 25.1 6.7 6.7 15.6 10.4 25.1 10.4 8.7 0 17-3.2 23.5-8.8 8.4-7.2 14.2-17.4 16.5-28.5-2-12-8.3-22.9-17.4-30.4-6.3-5.2-14.2-8.3-22.6-8.3zm120.7 0c-8.4 0-16.3 3.1-22.6 8.3-9.1 7.5-15.4 18.4-17.4 30.4 2.3 11.1 8.1 21.3 16.5 28.5 6.5 5.6 14.8 8.8 23.5 8.8 9.5 0 18.4-3.7 25.1-10.4 6.7-6.7 10.4-15.6 10.4-25.1 0-9.5-3.7-18.4-10.4-25.1-6.7-6.7-15.6-10.4-25.1-10.4z"/>
+        </svg>
+        <span class="absolute -top-8 bg-white text-[#07090F] text-[9px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap font-normal shadow-lg">Meta Ads</span>
+      </div>
 
             </div>
           </div>
@@ -146,7 +150,7 @@ const courses = ['Perencanaan Kreatif Media', 'Periklanan', 'Fotografi', 'Desain
 
         <div class="relative w-[70%] md:w-[60%] lg:w-[90%] aspect-[3/4]">
           <img
-            src="/images/fotoprofil.png"
+            src="/images/profil/fotoprofil-1.png"
             alt="Ahmad Rizqi Af Rizal Profile"
             class="relative z-10 w-full h-full object-cover object-top grayscale-[20%] hover:grayscale-0 transition-all duration-700 [mask-image:linear-gradient(to_bottom,black_50%,transparent_100%)] -webkit-mask-image:-webkit-linear-gradient(top,black_50%,transparent_100%)"
           >
