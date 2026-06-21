@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { supabase } from '@/utils/supabase' // Import supabase client
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -29,16 +30,31 @@ const router = createRouter({
     {
       path: '/admin/dashboard',
       name: 'admin-dashboard',
-      component: () => import('../views/admin/DashboardView.vue')
+      component: () => import('../views/admin/DashboardView.vue'),
+      meta: { requiresAuth: true } // Kunci rute ini
     }
   ],
-  // Fitur untuk otomatis scroll ke atas setiap pindah halaman
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
     } else {
       return { top: 0, behavior: 'smooth' }
     }
+  }
+})
+
+// Pengecekan sesi user sebelum pindah halaman
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.requiresAuth) {
+    const { data: { session } } = await supabase.auth.getSession()
+
+    if (session) {
+      next() // User login, silakan masuk
+    } else {
+      next('/admin') // Belum login, tendang ke halaman login
+    }
+  } else {
+    next() // Halaman public, bebas akses
   }
 })
 
